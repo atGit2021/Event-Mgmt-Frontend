@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'; //{useState, useEffect}
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { PhotoPlaceholder } from 'react-placeholder-image';
-import { Link} from 'react-router-dom'; //, useLocation 
+import { Link } from 'react-router-dom';
 
 
 
@@ -48,7 +48,7 @@ const CardStyles = styled.div`
 .cards {
     display: flex;
     flex: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -59,7 +59,7 @@ const CardStyles = styled.div`
     background: var(--gray-green);
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 50px;
     border-radius: 16px;
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
     cursor: pointer;
@@ -139,72 +139,57 @@ const CardStyles = styled.div`
 
 export default function Card() {
 
-    const [user, setUser] = useState([]);
-        useEffect(() => {
-        getFarm();
-        }, [])
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    getFarm();
+  }, [])
 
 
 
-    async function getFarm() {
-        try {
-        const response = await axios.get('http://localhost:5000/api/users/farms');
-    
-        console.log(response.data)
-        setUser(response.data)
+  async function getFarm() {
+    try {
+      const response = await axios.get('http://localhost:5000/api/users/farms');
 
-        } catch (error) {
-        console.error(error);
-        }
+      console.log(response.data)
+      setUser(response.data)
 
-        // export default response;
+    } catch (error) {
+      console.error(error);
     }
 
-    
-    return (
-        <CardStyles>
-            <div className="bigWrapper">
-            {user.map(currentUser => (  
-                //<link to="users/farmProfile">    className="d-flex flex-wrap"> console.log(currentUser.userFarms.farmId)
-                // console.log("ProductUpdate Received: ", location.state?.fProduct)
 
-                <div className="cards">
-                    <div className="card">
-                    {/* <Link to={{
-                        pathname: '/users/productUpdate',
-                        state: { 'fProduct': props.farmProduct }.
-                        console.log(pathname)
-                    }}> */}
-                    <Link to={{
-                    pathname: '/users/farmDetailPage',
-                    state: { 'selectedFarm': currentUser.userFarms }
-                    }}>
-                    {/* <Link to=""> */}
+  }
 
-                        <div className="cardTop">
-                            <PhotoPlaceholder width={350} height={250} className="cardImg"/>
-                            <h2 className="cardName">{currentUser.userFarms.farmName}</h2>
-                            <p class="cards__album" tabindex="0">
-                                <strong>{currentUser.userFarms.farmCity}</strong>, 
-                                <strong> {currentUser.userFarms.farmState}</strong>
-                            </p>
-                        </div>
 
-                        {/* <div className="cardBack">
-                            <h2 className="cardName">{currentUser.userFarms.farmName}</h2>
-                            <p className="cardDes">{currentUser.userFarms.farmDescription}</p>
-                            <p className="cardDes">{currentUser.userFarms.farmState}</p>
-                            <p className="cardDes">{currentUser.userFarms.farmCity}</p>
-                        </div> */}
-                    {/* </Link> */}
-                    </Link>
-                    </div>
+  return (
+    <CardStyles>
+      <div className="bigWrapper">
+        {user.map(currentUser => (
+          <div className="cards">
+            <div className="card">
+
+              <Link to={{
+                pathname: '/users/farmDetailPage',
+                state: { 'selectedFarm': currentUser.userFarms }
+              }}>
+
+                <div className="cardTop">
+                  <PhotoPlaceholder width={350} height={250} className="cardImg" />
+                  <h2 className="cardName">{currentUser.userFarms.farmName}</h2>
+                  <p class="cards__album" tabindex="0">
+                    <strong>{currentUser.userFarms.farmCity}</strong>,
+                    <strong> {currentUser.userFarms.farmState}</strong>
+                  </p>
                 </div>
-                
-            ))}
-            </div>
 
-        </CardStyles>
-    )
+              </Link>
+            </div>
+          </div>
+
+        ))}
+      </div>
+
+    </CardStyles>
+  )
 }
 
