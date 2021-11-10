@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from '../components/Landing/Card';
-//import { CustomPlaceholder } from 'react-placeholder-image';
 import styled from 'styled-components';
 
 
@@ -29,5 +28,3 @@ export default function Landing() {
         </LandingStyles>
     )
 }
-
-{/* <Mascot/>    */}

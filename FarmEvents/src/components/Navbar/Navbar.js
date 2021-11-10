@@ -1,8 +1,6 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-import { createBrowserHistory } from "history";
 import LoginToggle from './LoginToggle';
 
 
@@ -134,47 +132,7 @@ const NavbarStyles = styled.div`
 
 function Navbar() {
 
-  // let [items, setItems] = useState([]);
-  // let [inputTxt, setInputTxt] = useState("");
-  //const history = createBrowserHistory();
-
-
-  //const[showLinks, setShowLinks] = useState(false);
-
-  // const changeText = (e) => {
-  //   setInputTxt(e.target.value)
-  // }
-
-  // const submitInput = (e) => {
-  //   let newItems = [...items];
-  //   newItems.push({
-  //     name: inputTxt,
-  //     completed: false
-  //   })
-  //   setItems(newItems)
-  // }
-
-  // const onComplete = (complete, idx) => {
-  //   let updatedItems = [...items];
-
-  //   updatedItems[idx].completed = complete
-  //   setItems(updatedItems)
-
-  //   console.log(items);
-  // }
-
-  // <Router>
-  //   <Switch>
-  //     <Navbar isAuth={loggedIn} />
-  //     <Route exact path="/" exact component={Home} />
-  //     <Route path="/login" component={Login} />
-  //     <PrivateRoute path="/dashboard" component={Dashboard} />
-  //   </Switch>
-  // </Router>
-
-
-
-
+ 
 
   return (
     <NavbarStyles>
